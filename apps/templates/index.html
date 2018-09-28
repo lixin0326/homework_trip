@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驴游网</title>
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .table th {
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>地名</th>
+                <th>日期</th>
+                <th>价格</th>
+            </tr>
+
+            {% for trip in paginate.items %}
+                <a href="#">
+                    <tr>
+                        <td>{{ trip.des_name }}</td>
+                        <td>{{ trip.create_date }}</td>
+                        <td>{{ trip.price }}</td>
+                    </tr>
+                </a>
+            {% endfor %}
+
+        </table>
+    </div>
+
+    <ul class="pagination" style="margin-left: 450px">
+
+        {% if paginate.has_prev %}
+            <li><a href="http://127.0.0.1:8000/home/list/{{ paginate.prev_num }}/5/">上一页</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">上一页</a></li>
+        {% endif %}
+
+        {% for item in paginate.iter_pages() %}
+            {% if item %}
+                <li><a href="http://127.0.0.1:8000/home/list/{{ item }}/5/">{{ item }}</a></li>
+            {% else %}
+                <li class="disabled"><a>...</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginate.has_next %}
+            <li><a href="http://127.0.0.1:8000/home/list/{{ paginate.next_num }}/5/">下一页</a></li>
+        {% else %}
+            <li class="disabled"><a href="#">下一页</a></li>
+        {% endif %}
+
+    </ul>
+</div>
+
+</body>
+</html>

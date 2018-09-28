@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驴游网</title>
+    <link href="{{ url_for('static',filename='css/bootstrap.css') }}"
+          rel="stylesheet"
+          type="text/css">
+    <style type="text/css">
+        h1 {
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1 class="popover-title">欢迎来到驴游网</h1>
+<div class="container">
+    {#    搜索部分#}
+    <div class="input-group" style="width: 200px;margin-left: 450px;margin-top: 20px">
+        <form action="http://127.0.0.1:8000/home/list/1/5/" method="get">
+            <table>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <button class="btn btn-info">搜索</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    {#    主页面部分#}
+    <div class="img1">
+        <img src="{{ url_for('static',filename='img/7.jpg') }}" class="img-circle" style="height: 600px;width: 47%">
+        <img src="{{ url_for('static',filename='img/8.jpg') }}" class="img-circle" style="height: 600px;width: 47%">
+        <img src="{{ url_for('static',filename='img/4.jpg') }}" class="img-circle" style="height: 400px;width: 100%">
+        <img src="{{ url_for('static',filename='img/5.jpg') }}" class="img-circle" style="height: 400px;width: 100%">
+        <img src="{{ url_for('static',filename='img/6.jpg') }}" class="img-circle" style="height: 400px;width: 100%">
+    </div>
+</div>
+
+</body>
+</html>

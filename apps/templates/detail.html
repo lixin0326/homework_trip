@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>景点图片</title>
+    <style>
+        img {
+            height: 280px;
+            width: 32%;
+            float: left;
+            padding: 5px;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    {% for photo in photos %}
+        <a href="#">
+            <div>
+                <img src="http://127.0.0.1:8000/static/{{ photo.url }}">
+            </div>
+        </a>
+    {% endfor %}
+
+</div>
+</body>
+</html>
