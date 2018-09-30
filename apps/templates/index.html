@@ -23,15 +23,12 @@
                 <th>日期</th>
                 <th>价格</th>
             </tr>
-
             {% for trip in paginate.items %}
-                <a href="#">
-                    <tr>
-                        <td>{{ trip.des_name }}</td>
-                        <td>{{ trip.create_date }}</td>
-                        <td>{{ trip.price }}</td>
-                    </tr>
-                </a>
+                <tr>
+                    <td><a href="#">{{ trip.des_name }}</a></td>
+                    <td>{{ trip.create_date }}</td>
+                    <td>{{ trip.price }}</td>
+                </tr>
             {% endfor %}
 
         </table>
@@ -47,9 +44,11 @@
 
         {% for item in paginate.iter_pages() %}
             {% if item %}
-                <li><a href="http://127.0.0.1:8000/home/list/{{ item }}/5/">{{ item }}</a></li>
-            {% else %}
-                <li class="disabled"><a>...</a></li>
+                {% if item == paginate.page %}
+                    <li class="active"><a href="{{ url_for('home.list',page=item,size=10) }}">{{ item }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('home.list',page=item,size=10) }}">{{ item }}</a></li>
+                {% endif %}
             {% endif %}
         {% endfor %}
 
